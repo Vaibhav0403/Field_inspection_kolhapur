@@ -1,0 +1,111 @@
+.main-layout {
+    display: flex;
+    padding-left: 250px; /* Space for the sidebar's width */
+    padding-top: 80px;   /* Space for the fixed header's height */
+    padding-right: 20px; /* Add some padding on the right side for overall layout */
+    box-sizing: border-box;
+   
+}
+body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+        }
+        .form-container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 1300px; /* Adjust max-width as needed */
+            box-sizing: border-box;
+            margin: 100px auto;
+        }
+        h2 {
+            text-align: left;
+            color: #333;
+            margin-bottom: 25px;
+            font-size: 24px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 15px;
+        }
+        .form-row {
+            display: flex;
+            flex-wrap: wrap; /* Allows wrapping on smaller screens */
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            flex: 1; /* Distributes space evenly */
+            min-width: 300px; /* Minimum width for each input group */
+            display: flex;
+            flex-direction: column;
+        }
+        .form-group label {
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #555;
+            font-size: 15px;
+        }
+        .form-group select,
+        .form-group input[type="date"] {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box; /* Include padding in width */
+            appearance: none; /* Remove default dropdown arrow */
+            -webkit-appearance: none;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23666" width="18px" height="18px"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            background-size: 18px;
+        }
+        .form-group input[type="date"] {
+            background-image: none; /* Remove custom arrow for date input */
+            padding-right: 12px; /* Adjust padding for date input */
+        }
+        .btn-group {
+            display: flex;
+            justify-content: flex-start; /* Align buttons to the left */
+            gap: 15px;
+            margin-top: 30px;
+        }
+        .btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .btn-submit {
+            background-color: #28a745; /* Green */
+            color: white;
+        }
+        .btn-submit:hover {
+            background-color: #218838;
+        }
+        .btn-reset {
+            background-color: #dc3545; /* Red */
+            color: white;
+        }
+        .btn-reset:hover {
+            background-color: #c82333;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            .form-row {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .form-group {
+                min-width: unset; /* Remove min-width on small screens */
+            }
+            .btn-group {
+                flex-direction: column;
+                align-items: stretch;
+            }
+        }
