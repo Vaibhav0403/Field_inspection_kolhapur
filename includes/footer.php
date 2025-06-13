@@ -34,7 +34,7 @@
 <body>
 
   <div class="footer">
-    <div class="copy">Copyright © By <a href="#">जिल्हा परिषद कोल्हापूर</a> Developed & Maintained By <a href="#">SeTTribe</a></div>
+    <div class="copy">Copyright © By <a href="#">जिल्हा परिषद कोल्हापूर</a> Developed & Maintained By <a href="https://settribe.com/">SeTTribe</a></div>
   </div>
 
 </body>

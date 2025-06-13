@@ -17,7 +17,7 @@ body {
     flex-grow: 1;
     width: 100%;
     /* These paddings create the 'margin' effect for the entire content area */
-    padding-left: 250px; /* Space for the sidebar's width */
+    padding-left: 200px; /* Space for the sidebar's width */
     padding-top: 80px;   /* Space for the fixed header's height */
     padding-right: 20px; /* Add some padding on the right side to match screenshot gap */
     box-sizing: border-box; /* Crucial for padding to be included in width/height */
@@ -41,45 +41,46 @@ body {
 }
 
 
-/* --- Shared Container Styles (like form and report containers) --- */
-
+.form-container,
 .report-filters,
-.report-table-container {
+.report-table {
     background-color: #fff;
     padding: 30px; /* Inner padding of these white boxes */
     border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    width: 100%; /* Allows them to take full width up to max-width */
-    max-width: 1500px; /* This controls the overall width of the content blocks */
-    box-sizing: border-box;
-    margin-top:10px
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    width: 100%; /* Take full width of parent container (page-content) */
+    max-width: 1500px; /* Optional: Sets a maximum width for larger screens */
+    box-sizing: border-box; /* Include padding in the element's total width/height */
+    margin-bottom: 20px; /* Space between different content blocks */
 }
 
-/* Ensure h2 padding is appropriate for the look in the screenshot */
-h2 {
+/* Heading for sections */
+h5 {
     text-align: left;
-    color: #333;
+    color: #333; /* Dark grey color for text */
     margin-bottom: 25px;
-    font-size: 24px;
-    border-bottom: 1px solid #eee;
+    font-size: 20px;
+    border-bottom: 1px solid #eee; /* Light line below the heading */
     padding-bottom: 15px;
 }
 
+/* Form and Filter Row Layouts */
 .form-row,
 .filter-row {
     display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
+    flex-wrap: wrap; /* Allows items to wrap to the next line on smaller screens */
+    gap: 20px; /* Space between form/filter groups */
     margin-bottom: 20px;
-    align-items: flex-end;
+    align-items: flex-end; /* Aligns items at the bottom (useful for labels and inputs of different heights) */
 }
 
+/* Individual Form/Filter Groups (label + input/select) */
 .form-group,
 .filter-group {
-    flex: 1;
-    min-width: 250px;
+    flex: 1; /* Allows form groups to grow and shrink to fill space */
+    min-width: 250px; /* Minimum width before forcing a wrap */
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* Stacks label and input vertically */
 }
 
 .form-group label,
@@ -90,102 +91,109 @@ h2 {
     font-size: 15px;
 }
 
+/* Styling for form input and select elements */
 .form-group select,
 .form-group input[type="date"],
 .filter-group select,
 .filter-group input[type="date"],
 .filter-group input[type="text"] {
     width: 100%;
-    padding: 12px;
+    padding: 5px;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
-    box-sizing: border-box;
+    box-sizing: border-box; /* Ensures padding doesn't add to the width */
 }
 
+/* Custom styling for select dropdown arrow */
 .form-group select,
 .filter-group select {
-    appearance: none;
-    -webkit-appearance: none;
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23666" width="18px" height="18px"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+    appearance: none; /* Removes default browser dropdown arrow */
+    -webkit-appearance: none; /* For Webkit browsers */
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23666" width="18px" height="18px"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>'); /* Custom SVG arrow */
     background-repeat: no-repeat;
     background-position: right 10px center;
     background-size: 18px;
 }
 
+/* Adjust padding for date inputs to avoid overlapping with default calendar icon */
 .form-group input[type="date"],
 .filter-group input[type="date"] {
     padding-right: 12px;
 }
 
-.btn-group {
+/* Button Groups */
+.btn-group { /* For the "Add Visit" form buttons */
     display: flex;
     justify-content: flex-start;
-    gap: 15px;
+    gap: 15px; /* Space between buttons */
     margin-top: 30px;
 }
 
-.filter-buttons {
+.filter-buttons { /* For the "Show" and "Reset" filter buttons */
     display: flex;
     gap: 15px;
 }
 
+/* General Button Styling (consistent with Bootstrap theme) */
 .btn {
     padding: 12px 25px;
     border: none;
     border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-    white-space: nowrap;
+    transition: background-color 0.3s ease; /* Smooth transition on hover */
+    white-space: nowrap; /* Prevent button text from wrapping */
 }
 
-.btn-submit {
-    background-color: #28a745;
-    color: white;
-}
-.btn-submit:hover {
-    background-color: #218838;
-}
-
-.btn-reset,
-.btn-remove {
-    background-color: #dc3545;
-    color: white;
-}
-.btn-reset:hover,
-.btn-remove:hover {
-    background-color: #c82333;
-}
-
-.btn-show {
+/* Specific Button Colors */
+.btn-primary { /* Submit / Show */
     background-color: #007bff;
     color: white;
 }
-.btn-show:hover {
+.btn-primary:hover {
     background-color: #0056b3;
 }
 
-.btn-excel {
+.btn-secondary { /* Reset */
+    background-color: #6c757d;
+    color: white;
+}
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+.btn-info { /* Fill / View */
+    background-color: #17a2b8;
+    color: white;
+}
+.btn-info:hover {
+    background-color: #138496;
+}
+
+.btn-success { /* Complete / Report View */
     background-color: #28a745;
     color: white;
-    padding: 10px 20px;
-    text-decoration: none;
-    display: inline-block;
-    margin-bottom: 15px;
-    border-radius: 5px;
 }
-.btn-excel:hover {
+.btn-success:hover {
     background-color: #218838;
 }
 
+.btn-warning { /* Overdue */
+    background-color: #ffc107;
+    color: #212529; /* Dark text for better contrast on yellow */
+}
+.btn-warning:hover {
+    background-color: #e0a800;
+}
+
 /* --- Report Table Styles --- */
-.report-table-container {
-    overflow-x: auto;
+.report-table {
+    overflow-x: auto; /* Allows horizontal scrolling for large tables on small screens */
 }
 table {
     width: 100%;
-    border-collapse: collapse;
+    border-collapse: collapse; /* Removes space between table cells */
     margin-top: 20px;
 }
 table thead th {
@@ -203,41 +211,15 @@ table tbody td {
     vertical-align: middle;
 }
 table tbody tr:hover {
-    background-color: #f9f9f9;
+    background-color: #f9f9f9; /* Subtle hover effect on rows */
 }
 
 .action-btns,
 .photo-btns {
     display: flex;
     flex-wrap: wrap;
-    gap: 5px;
-    justify-content: flex-start
-}
-
-.action-btns .btn-fill {
-    background-color: #007bff;
-    color: white;
-}
-.action-btns .btn-fill:hover {
-    background-color: #0056b3;
-}
-
-.action-btns .btn-complete {
-    background-color: #28a745;
-    color: white;
-}
-.action-btns .btn-complete:hover {
-    background-color: #218838;
-}
-
-.photo-btns button,
-.photo-btns a {
-    background-color: #6c757d;
-    color: white;
-}
-.photo-btns button:hover,
-.photo-btns a:hover {
-    background-color: #5a6268;
+    gap: 5px; /* Small space between action/photo buttons */
+    justify-content: flex-start;
 }
 
 .no-data {
@@ -246,89 +228,78 @@ table tbody tr:hover {
     color: #777;
 }
 
-.pagination {
+/* DataTables specific styling (for search, pagination, buttons) */
+.dataTables_wrapper .dt-buttons {
+    margin-bottom: 10px;
+}
+.dataTables_wrapper .dataTables_filter {
+    text-align: right;
+    margin-bottom: 15px;
+}
+.dataTables_wrapper .dataTables_filter label {
+    font-weight: bold;
+    color: #555;
+    margin-right: 5px;
+}
+.dataTables_wrapper .dataTables_filter input {
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    width: 200px;
+}
+.dataTables_wrapper .dataTables_length {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.dataTables_wrapper .dataTables_length select {
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+.dataTables_wrapper .dataTables_paginate {
     display: flex;
     justify-content: center;
     margin-top: 20px;
 }
-.pagination a,
-.pagination span {
+.dataTables_wrapper .dataTables_paginate .paginate_button {
     padding: 8px 12px;
     margin: 0 4px;
     border: 1px solid #ddd;
     border-radius: 4px;
     text-decoration: none;
     color: #007bff;
+    cursor: pointer;
 }
-.pagination a:hover {
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover:not(.current) {
     background-color: #e9e9e9;
 }
-.pagination span.current {
+.dataTables_wrapper .dataTables_paginate .paginate_button.current {
     background-color: #007bff;
     color: white;
     border-color: #007bff;
 }
 
-.entries-per-page {
-    margin-bottom: 15px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-.entries-per-page select {
-    padding: 8px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-}
-
-.search-box {
-    margin-bottom: 15px;
-    text-align: right;
-}
-.search-box label {
-    margin-right: 5px;
-    font-weight: bold;
-    color: #555;
-}
-.search-box input {
-    padding: 8px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    width: 200px;
-}
-
+/* Status Pills (e.g., pending, completed) */
 .status-pill {
     display: inline-block;
     padding: 5px 10px;
-    border-radius: 15px;
+    border-radius: 15px; /* Creates the pill shape */
     font-size: 12px;
     font-weight: bold;
     color: white;
     text-align: center;
 }
-.status-pending { background-color: #ffc107; }
-.status-completed { background-color: #28a745; }
-.status-overdue { background-color: #dc3545; }
-.status-upcoming { background-color: #17a2b8; }
+.status-pending { background-color: #ffc107; } /* Warning yellow */
+.status-completed { background-color: #28a745; } /* Success green */
+.status-overdue { background-color: #dc3545; } /* Danger red */
+.status-upcoming { background-color: #17a2b8; } /* Info blue */
 
 
-/* Responsive adjustments */
+/* --- Responsive Adjustments for Page Content --- */
 @media (max-width: 992px) {
-    /* Adjust main layout for smaller screens */
-    .main-layout {
-        padding-left: 0; /* Sidebar might become a toggle on smaller screens */
-        padding-top: 80px; /* Still need padding for the top header */
-        padding-right: 0; /* Remove right padding on smaller screens if content should be full width */
-    }
-    .sidebar {
-        /* On smaller screens, you might hide sidebar by default or make it slide out */
-        position: static;
-        width: 100%;
-        height: auto;
-        padding-top: 0;
-        z-index: auto;
-    }
-
+    /* Form and filter rows become column layouts on smaller screens */
     .form-row,
     .filter-row {
         flex-direction: column;
@@ -336,37 +307,23 @@ table tbody tr:hover {
     }
     .form-group,
     .filter-group {
-        min-width: unset;
+        min-width: unset; /* Remove min-width to allow full width */
         width: 100%;
     }
-    .btn-group,
     .filter-buttons {
         flex-direction: column;
-        align-items: stretch;
+        align-items: stretch; /* Stretch buttons to full width */
     }
-    .btn,
-    .btn-excel {
-        width: 100%;
-    }
-
-    .filter-row .filter-group:nth-child(4),
-    .filter-row .filter-group:nth-child(5) {
-        width: calc(50% - 10px);
-        min-width: unset;
+    .btn {
+        width: 100%; /* Make all buttons full width on small screens */
     }
 
-    .search-box {
-        text-align: left;
-    }
-    .search-box input {
-        width: 100%;
-    }
-
-    /* Mobile Table Styles (Card-like layout) */
+    /* Mobile Table Styles (Card-like layout for DataTables) */
+    /* This makes each table row appear as a "card" on small screens */
     table, thead, tbody, th, td, tr {
         display: block;
     }
-    thead tr {
+    thead tr { /* Hide table header */
         position: absolute;
         top: -9999px;
         left: -9999px;
@@ -383,45 +340,46 @@ table tbody tr:hover {
         border: none;
         border-bottom: 1px solid #eee;
         position: relative;
-        padding-left: 50%;
+        padding-left: 50%; /* Space for the data-label (pseudo-element) */
         text-align: right;
         padding-top: 8px;
         padding-bottom: 8px;
-        display: flex;
+        display: flex; /* Use flex to align label and value */
         justify-content: space-between;
         align-items: center;
     }
     td:last-child {
-        border-bottom: none;
+        border-bottom: none; /* No border for the last cell in the card */
     }
-    td:before {
-        position: static;
-        content: attr(data-label);
+    td:before { /* Pseudo-element to display column header as a label */
+        position: static; /* No longer absolutely positioned */
+        content: attr(data-label); /* Get content from data-label attribute on td */
         width: auto;
         padding-right: 10px;
-        white-space: nowrap;
+        white-space: nowrap; /* Prevent label from wrapping */
         text-align: left;
         font-weight: bold;
         color: #333;
-        flex-shrink: 0;
+        flex-shrink: 0; /* Prevent label from shrinking */
     }
+    /* Assign data-labels for each column */
     td:nth-of-type(1):before { content: "अ. क्र."; }
     td:nth-of-type(2):before { content: "तालुका"; }
     td:nth-of-type(3):before { content: "आरोग्य केंद्र नाव"; }
     td:nth-of-type(4):before { content: "भेट दिनांक"; }
-    td:nth-of-type(5):before { content: "Action"; }
-    td:nth-of-type(6):before { content: "रिपोर्ट फोटो"; }
+    td:nth-of-type(5):before { content: "स्थिती"; }
+    td:nth-of-type(6):before { content: "कार्यवाही"; }
+    td:nth-of-type(7):before { content: "फोटो"; }
 
     .action-btns,
     .photo-btns {
-        flex-direction: column;
+        flex-direction: column; /* Stack action/photo buttons vertically */
         align-items: stretch;
         gap: 8px;
         padding-left: 0;
     }
-    .action-btns button,
-    .photo-btns button,
-    .photo-btns a {
+    .action-btns .btn,
+    .photo-btns .btn {
         width: 100%;
         min-width: unset;
         margin-right: 0;
@@ -429,16 +387,14 @@ table tbody tr:hover {
 }
 
 @media (max-width: 480px) {
-    .dashboard-container {
-        padding: 10px;
-    }
+    /* Further adjustments for very small screens */
     .form-container,
     .report-filters,
-    .report-table-container {
-        padding: 15px;
+    .report-table {
+        padding: 15px; /* Reduce padding */
     }
-    h2 {
-        font-size: 20px;
+    h5 {
+        font-size: 18px;
         margin-bottom: 15px;
     }
     .btn {
@@ -446,10 +402,10 @@ table tbody tr:hover {
         font-size: 14px;
     }
     table tbody td {
-        padding-left: 45%;
+        padding-left: 45%; /* Adjust label space in table cells */
     }
-    .filter-row .filter-group:nth-child(4),
-    .filter-row .filter-group:nth-child(5) {
+    .filter-row .form-group,
+    .filter-row .filter-group {
         width: 100%;
     }
 }

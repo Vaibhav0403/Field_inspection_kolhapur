@@ -117,6 +117,16 @@
         margin-top: 30px;
       }
     }
+     .error-message {
+            background-color: #f8d7da; /* Light red background */
+            color: #721c24; /* Dark red text */
+            border: 1px solid #f5c6cb;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+            text-align: center;
+            display: none; /* Hidden by default, shown by JavaScript */
+        }
     </style>
 </head>
 <body>
@@ -137,21 +147,42 @@
 
   <div class="login-section">
     <h2>लॉगिन</h2>
+    <div id="loginErrorMessage" class="error-message"></div>
    <form action="../actions/login_action.php" method="POST">
       <div class="form-group">
         <label for="username">युजरनेम</label>
-        <input type="text" id="username" name="username" placeholder="उदाहरण: sanjay">
+        <input type="text" id="username" name="username" placeholder="Username">
       </div>
 
       <div class="form-group">
         <label for="password">पासवर्ड</label>
-        <input type="password" id="password" name="password" placeholder="पासवर्ड">
+        <input type="password" id="password" name="password" placeholder="Password">
       </div>
 
       <button type="submit" class="login-btn">Login</button>
     </form>
   </div>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
 
+<script>
+    // JavaScript to display the error message as a SweetAlert pop-up
+    document.addEventListener('DOMContentLoaded', function() {
+        // Retrieve the error message passed from PHP
+        const phpErrorMessage = "<?php echo htmlspecialchars($errorMessage); ?>";
+
+        if (phpErrorMessage) {
+            Swal.fire({
+                icon: 'error',           // Can be 'success', 'error', 'warning', 'info', 'question'
+                title: 'लॉगिन त्रुटी!', // Title of the pop-up
+                text: phpErrorMessage,   // The actual error message
+                confirmButtonText: 'ओके', // Text for the confirmation button
+                // Optional: timer for auto-closing
+                // timer: 5000,
+                // timerProgressBar: true
+            });
+        }
+    });
+</script>
 </body>
 </html>

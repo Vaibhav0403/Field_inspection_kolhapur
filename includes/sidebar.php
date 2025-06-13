@@ -11,7 +11,7 @@
     }
 
     .sidebar {
-      width: 260px;
+      width: 300px;
       height: 1000px;
       background-color: #fff;
       box-shadow: 2px 0 5px rgba(0,0,0,0.1);
@@ -79,10 +79,39 @@
       <li><a href="../pages/health_center_checklist.php"><i class="fas fa-plus"></i> आरोग्य केंद्र चेक लिस्ट</a></li>
       <li><a href="../pages/health_center_report.php"><i class="fas fa-user"></i> आरोग्य केंद्र चेक लिस्ट - रिपोर्ट</a></li>
       <li><a href="../pages/primary_health_center_checklist.php"><i class="fas fa-clipboard-list"></i> उपकेंद्र चेक लिस्ट</a></li>
-      <li><a href="upkendra_report.php"><i class="fas fa-list"></i> उपकेंद्र चेक लिस्ट - रिपोर्ट</a></li>
-      <li><a href="logout.php"><i class="fas fa-power-off"></i> Log Out</a></li>
+      <li><a href="upkendra_checklist_report.php"><i class="fas fa-list"></i> उपकेंद्र चेक लिस्ट - रिपोर्ट</a></li>
+      <li><a href="../actions/logout.php" id="Logout"onclick="return confirm('Are you sure you want to log out?');"><i class="fas fa-power-off"></i> Log Out</a></li>
     </ul>
   </div>
+  <script>
+document.addEventListener('DOMContentLoaded', function() {
+    const logoutLink = document.getElementById('logoutLink');
+    // Or for a button: const logoutButton = document.getElementById('logoutButton');
+
+    if (logoutLink) { // Check if the element exists
+        logoutLink.addEventListener('click', function(event) {
+            // Prevent the default link behavior immediately
+            event.preventDefault();
+
+            // Show the confirmation dialog
+            if (confirm('Are you sure you want to log out?')) {
+                // If user clicks OK, proceed to logout.php
+                window.location.href = '../public/index.php'; // Adjust path if needed
+            }
+            // If user clicks Cancel, nothing happens (script just ends)
+        });
+    }
+
+    // If you're using a button, similar logic
+    // if (logoutButton) {
+    //     logoutButton.addEventListener('click', function() {
+    //         if (confirm('Are you sure you want to log out?')) {
+    //             window.location.href = '../includes/logout.php';
+    //         }
+    //     });
+    // }
+});
+</script>
 
 </body>
 </html>
